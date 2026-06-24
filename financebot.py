@@ -13,10 +13,10 @@ from newspaper import Article
 load_dotenv()
 
 # =================配置区域=================
-# 使用智谱AI API Key (环境变量名可自定义，此处沿用 OPENAI_API_KEY 以便兼容)
-zhipu_api_key = os.getenv("OPENAI_API_KEY")
+# 使用智谱AI API Key (环境变量名可自定义，此处沿用 ZhipuAI_API_KEY 以便兼容)
+zhipu_api_key = os.getenv("ZhipuAI_API_KEY")
 if not zhipu_api_key:
-    raise ValueError("环境变量 OPENAI_API_KEY 未设置，请在 .env 文件中配置智谱AI的API Key")
+    raise ValueError("环境变量 ZhipuAI_API_KEY 未设置，请在 .env 文件中配置智谱AI的API Key")
 
 # Server酱 SendKeys
 server_chan_keys_env = os.getenv("SERVER_CHAN_KEYS")
