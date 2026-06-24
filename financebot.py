@@ -5,7 +5,7 @@ import requests
 import feedparser
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from openai import OpenAI
+from zhipuai import ZhipuAI
 from dotenv import load_dotenv
 from newspaper import Article
 
@@ -25,10 +25,7 @@ if not server_chan_keys_env:
 server_chan_keys = server_chan_keys_env.split(",")
 
 # 初始化客户端 (指向智谱AI兼容接口)
-client = OpenAI(
-    api_key=zhipu_api_key,
-    base_url="https://open.bigmodel.cn/api/paas/v4/"
-)
+client = ZhipuAI(api_key=os.getenv("ZHIPU_API_KEY"))
 
 # RSS源地址列表
 rss_feeds = {
