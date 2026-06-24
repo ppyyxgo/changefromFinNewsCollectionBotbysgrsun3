@@ -43,7 +43,7 @@ jobs:
         env:
           TZ: Asia/Shanghai
         run: |
-          python news.txt
+          python news.py
           echo "脚本执行完成"
 
       - name: Upload analysis report
