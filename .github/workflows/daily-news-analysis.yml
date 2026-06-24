@@ -36,7 +36,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "ZhipuAI_API_KEY=${{ secrets.ZhipuAI_API_KEY }}" >> .env
+          echo "ZHIPUAI_API_KEY=${{ secrets.ZHIPUAI_API_KEY }}" >> .env
           echo "SERVER_CHAN_KEYS=${{ secrets.SERVER_CHAN_KEYS }}" >> .env
           cat .env
 
