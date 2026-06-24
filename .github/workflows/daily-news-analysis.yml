@@ -3,7 +3,7 @@ name: Daily News Analysis
 on:
   schedule:
     # 每天北京时间上午 9:00 执行 (UTC 时间 01:00)
-    - cron: '30 15 * * *'
+    - cron: '01 16 * * *'
   workflow_dispatch: # 允许手动触发
     inputs:
       debug:
@@ -14,7 +14,8 @@ on:
 jobs:
   analyze-news:
     runs-on: ubuntu-latest
-    
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -56,11 +57,15 @@ jobs:
             logs/
           retention-days: 7
 
-      - name: Send notification on failure
+      - name: Send Slack notification on failure
         if: failure()
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
           channel: '#notifications'
+          author_name: GitHub Actions Bot
+          success_message: ':white_check_mark: 任务执行成功'
+          cancelled_message: ':warning: 任务已取消'
+          failure_message: ':no_entry: 任务执行失败'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
