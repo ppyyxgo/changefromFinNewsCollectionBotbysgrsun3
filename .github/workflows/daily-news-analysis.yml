@@ -3,8 +3,8 @@ name: Daily News Analysis
 on:
   schedule:
     # 每天北京时间上午 9:00 执行 (UTC 时间 01:00)
-    - cron: '0 1 * * *'  # 北京时间 9:00 (UTC 1:00)
-    - cron: '0 10 * * *'  # 北京时间 18:00 (UTC 10:00)
+    - cron: '0 4 * * *'  # 北京时间 9:00 (UTC 1:00)
+    - cron: '30 12 * * *'  # 北京时间 13:00 (UTC 10:00)
   workflow_dispatch: # 允许手动触发
     inputs:
       debug:
